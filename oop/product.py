@@ -17,14 +17,28 @@ class Product:
     def print_details(self):
         print(self.name, self.price)
 
-    def net_price(self):
+    @property
+    def netprice(self):
         return self.price + self.price * Product.taxrate / 100
 
-
-p = Product("Laptop", 70000)
-p.print_details()
-print(p.net_price())
-
-print(Product.get_net_price(15000))
+    def __str__(self):
+        return f"{self.name} - {self.price}"
 
 
+    def __eq__(self, other):
+        return self.name == other.name  and self.price == other.price
+
+    def __gt__(self, other):
+        return self.price > other.price
+
+p1 = Product("Laptop", 80000)
+print(p1.netprice)  # Property
+
+
+# p2 = Product("Laptop", 70000)
+#
+# print(p1 == "abc")
+#
+# print(p1 != p2)
+# print(p1 > p2)
+# print(str(p1))
