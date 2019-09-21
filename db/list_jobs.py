@@ -1,6 +1,7 @@
 import sqlite3
 
 con = sqlite3.connect(r"e:\classroom\python\aug16\hr.db")
+print(type(con))
 cur = con.cursor()
 cur.execute("select * from jobs order by minsal desc")
 
